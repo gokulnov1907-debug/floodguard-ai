@@ -118,22 +118,6 @@ nav {
   gap: 15px; /* distance between buttons */
 }
 /* ─────────────────────────────────────────────────────
-   4. HERO SECTION
-───────────────────────────────────────────────────── */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 120px 24px 80px;
-  overflow: hidden;
-}
-
-
-/* ─────────────────────────────────────────────────────
    5. HERO DECORATIONS (glow, grid, diagonal lines)
 ───────────────────────────────────────────────────── */
 
@@ -187,76 +171,147 @@ nav {
   opacity: 0.12;
 }
 
-
+/* ─────────────────────────────────────────────────────
+   4. HERO SECTION
+───────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  overflow: hidden;
+}
+ 
+ 
 /* ─────────────────────────────────────────────────────
    6. HERO CONTENT
 ───────────────────────────────────────────────────── */
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 680px;
+  max-width: 620px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
 }
-
-/* TEXT: "Ready to Scale?" */
-.hero-eyebrow {
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
-  margin-bottom: 18px;
-}
-
-/* TEXT: "The fastest way to see your growth blind spots" */
+ 
+/* HEADLINE: "Check Flood Risk in Your City" */
 .hero-headline {
-  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.12;
   letter-spacing: -0.03em;
   color: var(--text-main);
-  margin-bottom: 22px;
 }
-
-/* Pink accent word — TEXT: "growth" */
+ 
+/* Accent word — "Your City" */
 .hero-headline .accent {
   color: var(--accent);
 }
-
-/* TEXT: "Free audit that shows you who to target..." */
-.hero-sub {
-  font-size: 0.92rem;
-  font-weight: 400;
-  color: var(--text-muted);
-  line-height: 1.65;
-  max-width: 380px;
-  margin: 0 auto 36px;
-  font-family: 'Inter', sans-serif;
+ 
+/* ─────────────────────────────────────────────────────
+   PREDICT FORM (input + button row)
+───────────────────────────────────────────────────── */
+.predict-form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 480px;
 }
-
-/* CTA button — TEXT: "Start Now" */
-.btn-cta {
-  display: inline-block;
-  padding: 14px 38px;
+ 
+/* City input box */
+.city-input {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+ 
+.city-input::placeholder {
+  color: var(--text-muted);
+}
+ 
+.city-input:focus {
+  border-color: var(--accent);
+  background: rgba(217, 70, 239, 0.06);
+}
+ 
+/* Predict button */
+.btn-predict {
+  padding: 14px 32px;
   border-radius: 999px;
   background: #ffffff;
   color: #0a0a0a;
   font-family: 'Sora', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   cursor: pointer;
   border: none;
+  white-space: nowrap;
   box-shadow:
-    0 0 30px rgba(255, 255, 255, 0.15),
-    0 4px 20px rgba(0, 0, 0, 0.4);
+    0 0 28px rgba(255, 255, 255, 0.12),
+    0 4px 18px rgba(0, 0, 0, 0.4);
   transition: transform 0.18s, box-shadow 0.18s;
 }
-
-.btn-cta:hover {
+ 
+.btn-predict:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 0 45px rgba(255, 255, 255, 0.22),
-    0 8px 28px rgba(0, 0, 0, 0.5);
+    0 0 40px rgba(255, 255, 255, 0.2),
+    0 8px 24px rgba(0, 0, 0, 0.5);
 }
-
-
-
+ 
+ 
+/* ─────────────────────────────────────────────────────
+   11. ANIMATIONS
+───────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+ 
+.hero-headline { animation: fadeUp 0.6s ease both; animation-delay: 0.15s; }
+.predict-form  { animation: fadeUp 0.6s ease both; animation-delay: 0.30s; }
+ 
+ 
+/* ─────────────────────────────────────────────────────
+   12. RESPONSIVE
+───────────────────────────────────────────────────── */
+@media (max-width: 520px) {
+  nav {
+    padding: 14px 20px;
+  }
+ 
+  .predict-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+ 
+  .city-input,
+  .btn-predict {
+    width: 100%;
+  }
+ 
+  .hero {
+    padding-top: 100px;
+  }
+}
+ 
+/* Footer spacer */
+footer {
+  height: 40px;
+}

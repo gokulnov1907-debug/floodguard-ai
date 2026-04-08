@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Logicore</title>
+  <title>Voost.io</title>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="Home.css"/>
+  <link rel="stylesheet" href="Predict.css"/>
 </head>
 <body>
  
@@ -15,7 +15,7 @@
   <nav>
   <div class="nav-logo">
     <img src="Capture.PNG" alt="Logo" />
-    <span class="nav-logo-text">Logicore.io</span>
+    <span class="nav-logo-text">&#10003;Logicore.io</span>
   </div>
 
   <div class="nav-links">
@@ -23,7 +23,6 @@
     <a href="Predict.html" id="Predict">Predict</a>
   </div>
 </nav>
- 
   <!-- ═══════════════════════════════════════════
        HERO SECTION
   ═══════════════════════════════════════════ -->
@@ -48,29 +47,35 @@
         <line x1="0"   y1="300" x2="800" y2="300" stroke="white" stroke-width="0.4" opacity="0.3"/>
       </svg>
     </div>
- 
+        <!-- ── Hero Content ── -->
     <div class="hero-content">
  
-      <!-- EYEBROW TEXT: "Ready to Scale?" -->
-      <p class="hero-eyebrow">Ready to Predict?</p>
- 
-      <!-- HEADLINE TEXT: "The fastest way to see your growth blind spots" -->
+      <!-- HEADLINE TEXT: "Check Flood Risk in Your City" -->
       <h1 class="hero-headline">
-        FloodGuard AI<br>
-        
+        Check Flood Risk in<br>
+        <span class="accent">Your City</span>
       </h1>
  
-      <!-- SUBTEXT: "Free audit that shows you who to target, how to position and the next 3 moves to grow revenue." -->
-      <pre class="hero-sub">
-        A free AI reads the clouds, no lies behind its eyes,
-Predicting storms with truth, where data never disguises.
-      </pre>
+      <!-- Input + Button row -->
+      <div class="predict-form">
  
-      <!-- CTA BUTTON TEXT: "Start Now" -->
-      <button class="btn-cta">Predict Now</button>
+        <!-- INPUT PLACEHOLDER: "Enter your location" -->
+        <input
+          type="text"
+          class="city-input"
+          placeholder="Enter your location"
+        />
+ 
+        <!-- BUTTON TEXT: "Predict" -->
+        <button class="btn-predict">Predict</button>
+ 
+      </div>
  
     </div>
+ 
   </section>
+ 
+  <footer></footer>
+ 
 </body>
 </html>
- 
