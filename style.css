@@ -1,0 +1,456 @@
+/* =====================================================
+   style.css — Voost.io Landing Page
+   =====================================================
+   SECTIONS:
+   1. Reset & CSS Variables
+   2. Base / Body
+   3. Navbar
+   4. Hero Section
+   5. Hero Decorations (grid, glow, lines)
+   6. Hero Content (eyebrow, headline, sub, CTA)
+   7. Cards Section
+   8. Card — Time Stat (60 seconds)
+   9. Card — Boost Revenue
+   10. Network Diagram
+   11. Animations
+   12. Responsive
+===================================================== */
+
+
+/* ─────────────────────────────────────────────────────
+   1. RESET & CSS VARIABLES
+───────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:         #0a0a0a;
+  --card-bg:    #111111;
+  --card-bg2:   #131313;
+  --border:     rgba(255, 255, 255, 0.07);
+  --accent:     #d946ef;
+  --accent2:    #a21caf;
+  --text-main:  #ffffff;
+  --text-muted: #8a8a8a;
+  --glow:       rgba(217, 70, 239, 0.55);
+}
+
+
+/* ─────────────────────────────────────────────────────
+   2. BASE / BODY
+───────────────────────────────────────────────────── */
+html, body {
+  background: var(--bg);
+  color: var(--text-main);
+  font-family: 'Sora', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   3. NAVBAR
+───────────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* LOGO — replace img src with your own logo file */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+ 
+}
+
+.nav-logo img {
+  height: 28px;
+}
+
+/* Text fallback if no logo image is used */
+.nav-logo-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+}
+
+
+#Home {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 20px;
+  
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-main);
+  font-family: 'Sora', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-book:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-book svg {
+  opacity: 0.75;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   4. HERO SECTION
+───────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  overflow: hidden;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   5. HERO DECORATIONS (glow, grid, diagonal lines)
+───────────────────────────────────────────────────── */
+
+/* Purple radial glow at top-center */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 420px;
+  background: radial-gradient(
+    ellipse at 50% 20%,
+    rgba(168, 0, 212, 0.55) 0%,
+    rgba(100, 0, 140, 0.25) 45%,
+    transparent 75%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle dot/grid texture overlay */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black 30%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Diagonal decorative lines container */
+.hero-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-lines svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  opacity: 0.12;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   6. HERO CONTENT
+───────────────────────────────────────────────────── */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+}
+
+/* TEXT: "Ready to Scale?" */
+.hero-eyebrow {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 18px;
+}
+
+/* TEXT: "The fastest way to see your growth blind spots" */
+.hero-headline {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text-main);
+  margin-bottom: 22px;
+}
+
+/* Pink accent word — TEXT: "growth" */
+.hero-headline .accent {
+  color: var(--accent);
+}
+
+/* TEXT: "Free audit that shows you who to target..." */
+.hero-sub {
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 380px;
+  margin: 0 auto 36px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* CTA button — TEXT: "Start Now" */
+.btn-cta {
+  display: inline-block;
+  padding: 14px 38px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #0a0a0a;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  border: none;
+  box-shadow:
+    0 0 30px rgba(255, 255, 255, 0.15),
+    0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+
+.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 45px rgba(255, 255, 255, 0.22),
+    0 8px 28px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ─────────────────────────────────────────────────────
+   7. CARDS SECTION
+───────────────────────────────────────────────────── */
+.cards-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* Shared card base */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 36px 32px;
+  overflow: hidden;
+  position: relative;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   8. CARD — TIME STAT ("60 seconds")
+───────────────────────────────────────────────────── */
+.card-time {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* TEXT: "60 seconds" */
+.card-time .stat {
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text-main);
+}
+
+/* TEXT: "to walk away with 3 growth plays you can act on today" */
+.card-time .stat-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.55;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  width: 100%;
+}
+
+/* Dashed bracket decoration at bottom of card */
+.bracket {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  right: 32px;
+  height: 32px;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  pointer-events: none;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   9. CARD — BOOST REVENUE
+───────────────────────────────────────────────────── */
+.card-boost {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* TEXT: "Boost revenue without extra spend" */
+.card-boost .card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+}
+
+/* TEXT: "Gaps you can close without extra headcount" */
+.card-boost .card-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   10. NETWORK DIAGRAM (inside card-boost)
+───────────────────────────────────────────────────── */
+.network {
+  position: relative;
+  height: 90px;
+  margin-top: 8px;
+}
+
+/* Shared node style */
+.node {
+  position: absolute;
+  border-radius: 999px;
+  background: #1d1d1d;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon circle nodes */
+.node-icon {
+  width: 38px;
+  height: 38px;
+}
+
+.node-icon svg {
+  opacity: 0.6;
+}
+
+/* TEXT: "Boost revenue" pill node */
+.node-pill {
+  padding: 8px 16px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-main);
+  background: #222;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  white-space: nowrap;
+}
+
+/* Connector lines between nodes */
+.connector {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  height: 1px;
+  transform-origin: left center;
+}
+
+/* Node positions */
+.n1    { top: 8px;    left: 20px; }
+.n2    { top: 48px;   left: 0px;  }
+.n3    { bottom: 4px; left: 36px; }
+.npill { top: 26px;   left: 120px; }
+
+/* Connector positions & angles */
+.c1 { top: 27px; left: 58px; width: 68px; transform: rotate(-14deg); }
+.c2 { top: 67px; left: 38px; width: 88px; transform: rotate(-28deg); }
+.c3 { top: 80px; left: 74px; width: 50px; transform: rotate(-48deg); }
+
+
+/* ─────────────────────────────────────────────────────
+   11. ANIMATIONS
+───────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-eyebrow  { animation: fadeUp 0.6s ease both; animation-delay: 0.10s; }
+.hero-headline { animation: fadeUp 0.6s ease both; animation-delay: 0.22s; }
+.hero-sub      { animation: fadeUp 0.6s ease both; animation-delay: 0.34s; }
+.btn-cta       { animation: fadeUp 0.6s ease both; animation-delay: 0.46s; }
+.cards-section { animation: fadeUp 0.7s ease both; animation-delay: 0.60s; }
+
+
+/* ─────────────────────────────────────────────────────
+   12. RESPONSIVE
+───────────────────────────────────────────────────── */
+@media (max-width: 620px) {
+  nav {
+    padding: 14px 20px;
+  }
+
+  .cards-section {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 100px;
+  }
+}
+
+/* Footer spacer */
+footer {
+  height: 40px;
+}
