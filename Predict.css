@@ -310,6 +310,50 @@ nav {
     padding-top: 100px;
   }
 }
+/* ─────────────────────────────────────────────────────
+   RESULT BOX — appears after Flask responds
+───────────────────────────────────────────────────── */
+.result-box {
+  display: none;                         /* hidden by default */
+  margin-top: 4px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-align: center;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(8px);
+}
+ 
+/* JS adds .visible to show the box */
+.result-box.visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+ 
+/* Success — Low / Moderate / High result */
+.result-box.success {
+  background: rgba(217, 70, 239, 0.1);
+  border: 1px solid rgba(217, 70, 239, 0.35);
+  color: #f0a8ff;
+}
+ 
+/* Warning — empty input */
+.result-box.warning {
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  color: #fcd34d;
+}
+ 
+/* Error — server down / bad response */
+.result-box.error {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
  
 /* Footer spacer */
 footer {
