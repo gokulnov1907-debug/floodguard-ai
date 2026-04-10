@@ -5,7 +5,7 @@
  
 // ── CONFIG ────────────────────────────────────────────
 // Change this if your Flask app runs on a different port
-const FLASK_URL = "http://127.0.0.1:5000/predict";
+const FLASK_URL = "/calculate";
  
  
 // ── GRAB ELEMENTS ─────────────────────────────────────
